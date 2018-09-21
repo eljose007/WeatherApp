@@ -28,7 +28,6 @@ const getWeatherState = weather => {
   } else {
     return CLOUD
   }
-  return SUN;
 }
 
 const transformWeather = weather_data => {
