@@ -9,6 +9,7 @@ import './App.css';
 import ForecastExtended from './components/ForecastExtended';
 
 const cities = [
+  'Montevideo,uy',
   'Buenos Aires,ar',
   'Washington,us',
   'Bogota,col',
