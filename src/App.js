@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import LocationList from './components/LocationList'
-import { createStore } from 'redux';
 import './App.css';
 import ForecastExtended from './components/ForecastExtended';
+import { setCity } from './actions';
 
 const cities = [
   'Montevideo,uy',
@@ -20,7 +21,9 @@ const cities = [
 ]
 
 
-const store = createStore(() => {}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+
+
 class App extends Component {
 
   constructor(){
@@ -31,8 +34,7 @@ class App extends Component {
   handleSelectedLocation = city => {
     this.setState({ city });
 
-    const action = { type: 'setCity', value: city };
-    store.dispatch(action);
+    this.props.setCity(city);
   };
   render() {
     const { city } = this.state;
@@ -74,4 +76,12 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapDispatchToPropsActions = dispatch => ({
+  setCity: value => dispatch(setCity(value))
+});
+
+const AppConnected = connect(null, mapDispatchToPropsActions)(App);
+
+
+export default AppConnected;
