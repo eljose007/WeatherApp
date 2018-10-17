@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import LocationListContainer from './containers/LocationListContainer';
 import './App.css';
-import ForecastExtended from './components/ForecastExtended';
+import ForecastExtendedContainer from './containers/ForecastExtendedContainer';
 
 const cities = [
   'Montevideo,uy',
@@ -49,7 +49,7 @@ class App extends Component {
               <div className="detail">
               {
                 city && 
-                <ForecastExtended city={city}></ForecastExtended>                
+                <ForecastExtendedContainer></ForecastExtendedContainer>                
               }
                 
               </div>
