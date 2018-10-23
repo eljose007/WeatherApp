@@ -21,8 +21,7 @@ export const setSelectedCity = payload => {
         ).then(
             weather_data => {
                 const forecastData = transformForecast(weather_data);
-                console.log(forecastData);
-
+                
                 //modificar el estado con el restultado de la promise (fetch)
                 dispatch(setForecastData({ city: payload, forecastData }));
 
