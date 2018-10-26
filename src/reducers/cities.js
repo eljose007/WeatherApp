@@ -13,3 +13,5 @@ export const cities = (state = {}, action) =>{
 }
 
 /* eslint-enable */
+
+export const getForecastDataFromCities = (state, city) => state[city] && state[city].forecastData;
