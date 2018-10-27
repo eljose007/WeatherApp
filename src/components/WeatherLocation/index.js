@@ -14,54 +14,30 @@ import './styles.css';
 //   wind: '18 m/s',
 // };
 
-class WeatherLocation extends Component {
-  constructor(props){
-    super(props);
-    const { city } = props;
-    this.state = {
-      city,
-      data: null,
-    };
-  }
 
-  componentDidMount() {
-    this.handleUpdateClick();
-  }
 
-  componentDidUpdate(prevProps, prevState) {
-  }
 
-  handleUpdateClick = () =>{
-    const api_weather = getUrlWeatherByCity(this.state.city);
-    fetch(api_weather).then ( resolve => {
-      return resolve.json();
-    }).then( data => {
-      const newWeather = transformWeather(data);
-      this.setState({
-        data: newWeather,
-      });
 
-    });
-    // this.setState({
-    //   data: data2,
-    // })
-  }
-  render (){
-    const {onWeatherLocationClick} = this.props;
-    const { city, data } = this.state;
-    return (<div className="weatherLocationCont"  onClick={onWeatherLocationClick}>
+
+const WeatherLocation = ({ onWeatherLocationClick, city, data }) => (
+     <div className="weatherLocationCont"  onClick={onWeatherLocationClick}>
         <Location city={city}></Location>
         { data ?
           <WeatherData data={data}></WeatherData> :
           <CircularProgress size={50}/>
         }
-    </div>);
-  }
-}
+    </div>
+)
 
 WeatherLocation.propTypes = {
   city: PropTypes.string.isRequired,
   onWeatherLocationClick: PropTypes.func,
+  data: PropTypes.shape({
+    temperature: PropTypes.number.isRequired,
+    weatherState: PropTypes.string.isRequired,
+    humidity: PropTypes.number.isRequired,
+    wind: PropTypes.string.isRequired,
+  }),
 }
 
 export default WeatherLocation;
