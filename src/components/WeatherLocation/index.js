@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import transformWeather from './../../services/transformWeather';
 import { PropTypes } from 'prop-types';
-import getUrlWeatherByCity from './../../services/getUrlWeatherByCity';
 import './styles.css';
 
 // const data2 = {
@@ -13,11 +11,6 @@ import './styles.css';
 //   humidity: 20,
 //   wind: '18 m/s',
 // };
-
-
-
-
-
 
 const WeatherLocation = ({ onWeatherLocationClick, city, data }) => (
      <div className="weatherLocationCont"  onClick={onWeatherLocationClick}>
